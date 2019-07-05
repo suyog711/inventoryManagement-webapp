@@ -1,0 +1,32 @@
+<h1 *ngIf="!results">Product List</h1><br>
+<button class="btn btn-success" *ngIf="results" (click)="showSearchMenu()">Search Again</button>
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+<table *ngIf="!loading" class="table table-bordered">
+  <thead>
+    <th>S.N</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Brand</th>
+    <th>Price</th>
+    <th>Colors</th>
+    <th>Created Date</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prod of products;let i =index">
+      <td>{{i+1}}</td>
+      <td>{{prod.name}}</td>
+      <td>{{prod.category}}</td>
+      <td>{{prod.brand}}</td>
+      <td>{{prod.price}}</td>
+      <td>{{prod.colors}}</td>
+      <td>{{prod.createdAt | date:'fullDate'}}</td>
+      <td>
+        <button class="btn btn-info" [routerLink]="'/product/edit/'+prod._id">edit</button>
+        <button class="btn btn-danger" style="margin-left: 10px;" (click)="remove(prod._id,i)">delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

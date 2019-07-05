@@ -1,0 +1,53 @@
+<h1>Add Product</h1>
+<form class="form-group" #productForm="ngForm">
+  <label for="name">Name</label>
+  <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="product.name">
+
+  <label for="category">Category</label>
+  <input class="form-control" type="text" name="category" placeholder="Category" [(ngModel)]="product.category"
+    required>
+
+  <label for="brand">Brand</label>
+  <input class="form-control" type="text" name="brand" placeholder="Brand" [(ngModel)]="product.brand">
+
+  <label for="description">Description</label>
+  <input class="form-control" type="text" name="description" placeholder="Description"
+    [(ngModel)]="product.description">
+
+  <label for="quantity">Quantity</label>
+  <input class="form-control" type="number" name="quantity" placeholder="Quantity" [(ngModel)]="product.quantity">
+
+  <label for="price">Price</label>
+  <input class="form-control" type="text" name="price" placeholder="Price" [(ngModel)]="product.price">
+
+  <label for="modelNo">Model No</label>
+  <input class="form-control" type="text" name="modelNo" placeholder="Model No" [(ngModel)]="product.modelNo">
+
+  <label for="colors">Colors</label>
+  <input class="form-control" type="text" name="colors" placeholder="Colors" [(ngModel)]="product.colors">
+
+  <label for="tags">Tags</label>
+  <input class="form-control" type="text" name="tags" placeholder="Tags" [(ngModel)]="product.tags">
+  <br>
+  <label class="radio" for="warranty">Warranty</label><br>
+  <input name="warranty" type="radio" [(ngModel)]="product.warranty.status" [value]="true"
+    [checked]="product.warranty.status"> yes
+  <input name="warranty" type="radio" [(ngModel)]="product.warranty.status" [value]="false"
+    [checked]="!product.warranty.status" style="margin-left:20px"> no
+
+  <br>
+  <div *ngIf="product.warranty.status">
+    <label for="warrantyPeriod">Warranty Period</label>
+    <input class="form-control" type="text" name="warrantyPeriod" placeholder="Warranty Period"
+      [(ngModel)]="product.warranty.warrantyPeriod">
+
+    <label for="warrantyDescription">Warranty Description</label>
+    <input class="form-control" type="text" name="warrantyDescription" placeholder="Warranty Description"
+      [(ngModel)]="product.warranty.warrantyDescription">
+  </div>
+  <br>
+  <button class="btn btn-primary" [disabled]="productForm.invalid" *ngIf="!submitting" (click)="submit()">Add
+    Product</button>
+  <button class="btn btn-info" *ngIf="submitting" disabled>Adding...</button>
+
+</form>

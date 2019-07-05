@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 style="text-align:center">Register</h1>
+    <p style="text-align:center">Please register to START</p>
+    <form #registerForm="ngForm" class="form-group">
+        <label for="name">name</label>
+        <div [hidden]="name.valid || name.pristine" style="color: red">required field*</div>
+        <input class="form-control" type="text" placeholder="name here" name="name" required [(ngModel)]="user.name"
+            #name="ngModel"><br /><br />
+
+        <label for="email">email</label>
+        <input class="form-control" type="text" placeholder="email here" name="email"
+            [(ngModel)]="user.email" /><br /><br />
+
+        <label for="phoneNumber">phone number</label>
+        <input class="form-control" type="number" placeholder="number here" name="phoneNumber"
+            [(ngModel)]="user.phoneNumber" /><br />
+
+        <label for="gender">gender</label>
+        <div [hidden]="gender.valid || gender.pristine" style="color: red">required field*</div>
+        <br>
+        <input class="form-control" type="text" name="gender" required [(ngModel)]="user.gender" #gender="ngModel"> <br>
+
+        <label for="username">username</label>
+        <div [hidden]="username.valid || username.pristine" style="color: red">required field*</div>
+        <input class="form-control" type="text" placeholder="username here" name="username" required
+            [(ngModel)]="user.username" #username="ngModel"><br /><br />
+
+        <label for="password">password</label>
+        <div [hidden]="password.valid || password.pristine" style="color: red">required field*</div>
+        <input class="form-control" type="password" placeholder="password here" name="password" required
+            [(ngModel)]="user.password" #password="ngModel"><br />
+
+        <button class="btn btn-primary" type="submit" (click)="submit()" *ngIf="!submitting">Submit</button>
+        <button class="btn btn-info" type="submit" *ngIf="submitting" disabled>Submittingg</button>
+
+    </form>
+    <p>already have an account? <span>login <a [routerLink]="['/auth/login']">here</a></span></p>
+</div>

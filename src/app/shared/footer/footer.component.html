@@ -1,0 +1,42 @@
+<nav class="col-md-2 d-none d-md-block bg-custom sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="['/user']">
+          <span data-feather="home"></span>
+          Dashboard <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/product/list']">
+          <span data-feather="shopping-cart"></span>
+          View Products
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/product/add']">
+          <span data-feather="users"></span>
+          Add Product
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/product/search']">
+          <span data-feather="bar-chart-2"></span>
+          Search Product
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user/change-password']">
+          <span data-feather="layers"></span>
+          Change Password
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/user/profile']">
+          <span data-feather="layers"></span>
+          Profile
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

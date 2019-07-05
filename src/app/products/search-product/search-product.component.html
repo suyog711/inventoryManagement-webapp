@@ -1,0 +1,55 @@
+<div *ngIf="!searchResult">
+  <h1>Search Product</h1>
+  <form class="form-group" #productForm="ngForm">
+    <label for="category">Category</label>
+    <select class="form-control" name="category" (change)="catChange(product.category)" [(ngModel)]="product.category">
+      <option value="" disabled>(Select Category)</option>
+      <option [value]="cat" *ngFor="let cat of categories">{{cat}}</option>
+    </select>
+    <div *ngIf="showName">
+      <label for="name">Name</label>
+      <select class="form-control" name="name" placeholder="Name" [(ngModel)]="product.name">
+        <option value="">(Select Name)</option>
+        <option [value]="item.name" *ngFor="let item of groupByName">{{item.name}}</option>
+      </select>
+    </div>
+    <label for="brand">Brand</label>
+    <select class="form-control" type="text" name="brand" placeholder="Brand" [(ngModel)]="product.brand">
+      <option value="">(Select Brand)</option>
+      <option [value]="item" *ngFor="let item of groupByBrand">{{item}}</option>
+    </select>
+    <label for="description">Description</label>
+    <input class="form-control" type="text" name="description" placeholder="Description"
+      [(ngModel)]="product.description">
+
+    <label for="minPrice">Minimum Price</label>
+    <input class="form-control" type="number" name="minPrice" placeholder="Minimum Price"
+      [(ngModel)]="product.minPrice">
+
+    <label for="maxPrice">Maximum Price</label>
+    <input class="form-control" type="number" name="maxPrice" placeholder="Maximum Price"
+      [(ngModel)]="product.maxPrice">
+    <label for="fromDate">From Date</label>
+    <input class="form-control" type="date" name="fromDate" placeholder="From Date" [(ngModel)]="product.fromDate">
+    <input type="checkbox" [checked]="showMultipleDate" (change)="changeMultipleDate()">Multiple Date Range <br>
+    <div *ngIf="showMultipleDate">
+      <label for="toDate">To Date</label>
+      <input class="form-control" type="date" name="toDate" placeholder="To Date" [(ngModel)]="product.toDate">
+    </div>
+    <label for="colors">Colors</label>
+    <input class="form-control" type="text" name="colors" placeholder="Colors" [(ngModel)]="product.colors">
+
+    <label for="tags">Tags</label>
+    <input class="form-control" type="text" name="tags" placeholder="Tags" [(ngModel)]="product.tags">
+    <br>
+    <br>
+    <button class="btn btn-primary" [disabled]="productForm.invalid" *ngIf="!submitting" (click)="search()">Search
+      Product</button>
+    <button class="btn btn-info" *ngIf="submitting" disabled>Searching...</button>
+
+  </form>
+</div>
+<div *ngIf="searchResult">
+  <h1>Search Results</h1>
+  <app-list-product (showAgain)="showSearchForm()" [results]="products"></app-list-product>
+</div>

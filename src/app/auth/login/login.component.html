@@ -1,0 +1,23 @@
+<div class="container">
+	<h1 style="text-align:center">
+		Welcome to ANGULAR COURSE!!
+	</h1>
+	<h1 style="text-align:center">LOGIN</h1><span></span>
+	<p>Please login to START</p>
+	<form #loginForm="ngForm" class="form-group" novalidate>
+		<label for="username">username</label>
+		<div [hidden]="usrname.valid || usrname.pristine" style="color: red">required field*</div>
+		<input class="form-control" type="text" placeholder="username here" name="username" required
+			[(ngModel)]="user.username" #usrname="ngModel"><br /><br />
+		<label for="password">password</label>
+		<div *ngIf="pwd.invalid && pwd.dirty" style="color: red">required field*</div>
+		<input [(ngModel)]="user.password" #pwd="ngModel" class="form-control" type="password"
+			placeholder="password here" name="password" required><br />
+		<button (click)="login()" [disabled]="loginForm.invalid" class="btn btn-primary" type="submit"
+			*ngIf='!submitting'>Login</button>
+		<button class="btn btn-info" type="submit" *ngIf="submitting" disabled>Logging In</button>
+	</form>
+	<p>Don't have an account? <span>Register<a [routerLink]="['/auth/register']"> here</a></span></p>
+	<p><span><a [routerLink]="['/auth/forgot-password']">forgot password?</a></span></p>
+
+</div>
